@@ -26,10 +26,11 @@ int _printf(const char *format, ...)
 		len = seg_len(substrings[i], '\0');
 		printed += len;
 		write(STDOUT_FILENO, substrings[i], len);
+
 		i++;
 	}
 
 	free_all(substrings);
 
-	return (len);
+	return (printed);
 }
