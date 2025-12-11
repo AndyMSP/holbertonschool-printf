@@ -81,10 +81,16 @@ char *get_arg(char spec, va_list ap)
 		res[0] = '%';
 		res[1] = -1;
 		break;
-	default:
+	case '\0':
 		res = malloc(sizeof(char) * 2);
 		res[0] = -1;
 		res[1] = -1;
+		break;
+	default:
+		res = malloc(sizeof(char) * 3);
+		res[0] = '%';
+		res[1] = spec;
+		res[2] = -1;
 	}
 
 	return (res);
