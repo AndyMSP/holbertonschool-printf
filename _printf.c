@@ -16,6 +16,9 @@ int _printf(const char *format, ...)
 	char **substrings = NULL;
 	int len = 0, i = 0, printed = 0, args;
 
+	if (!format)
+		return (-1);
+
 	va_start(ap, format);
 
 	substrings = parser(format, ap);
