@@ -5,7 +5,7 @@
 
 int _printf(const char *format, ...);
 int calc_args(const char *);
-int seg_len(const char *, char);
+int seg_len(const char *, char, char);
 char *_strncpy(const char *src, char *dst, int n);
 char **parser(const char *, va_list);
 char *get_arg(char, va_list);

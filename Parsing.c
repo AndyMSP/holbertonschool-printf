@@ -34,7 +34,7 @@ char **parser(const char *format, va_list ap)
 		}
 		else
 		{
-			len = seg_len(format + j, '%');
+			len = seg_len(format + j, '%', '\0');
 			strings[i] = malloc(sizeof(char) * (len + 1));
 			strings[i] = _strncpy(format + j, strings[i], len);
 			j += len;
@@ -66,13 +66,13 @@ char *get_arg(char spec, va_list ap)
 		ch = (char)va_arg(ap, int);
 		res = malloc(sizeof(char) * 2);
 		res[0] = ch;
-		res[1] = '\0';
+		res[1] = -1;
 		break;
 	case 's':
 		str = (char *)va_arg(ap, char *);
 		if (str == NULL)
 			str = "(null)";
-		len = seg_len(str, '\0');
+		len = seg_len(str, '\0', -1);
 		res = malloc(sizeof(char) * (len + 1));
 		res = _strncpy(str, res, len);
 		break;

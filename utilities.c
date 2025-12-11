@@ -49,18 +49,19 @@ int calc_args(const char *format)
 /**
  * seg_len - calculate length of string up to first of delimiter or null byte
  * @str: string to process
- * @delim: char to use as delimiter
+ * @del1: char to use as delimiter
+ * @del2: char to use as delimiter
  *
  * Return: int length of string
  */
-int seg_len(const char *str, char delim)
+int seg_len(const char *str, char del1, char del2)
 {
 	int len = 0;
 
 	if (!str)
 		return (0);
 
-	while (str[len] != delim && str[len] != '\0')
+	while (str[len] != del1 && str[len] != del2)
 		len++;
 
 	return (len);
@@ -88,7 +89,7 @@ char *_strncpy(const char *src, char *dst, int n)
 		dst[i] = src[i];
 		i++;
 	}
-	dst[i] = '\0';
+	dst[i] = -1;
 
 	return (dst);
 }

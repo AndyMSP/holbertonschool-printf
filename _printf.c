@@ -27,10 +27,7 @@ int _printf(const char *format, ...)
 	i = 0;
 	while (i < args)
 	{
-		if (!substrings[i][0] && !substrings[i][1])
-			len = 1;
-		else
-			len = seg_len(substrings[i], '\0');
+		len = seg_len(substrings[i], -1, -1);
 		printed += len;
 		write(STDOUT_FILENO, substrings[i], len);
 
